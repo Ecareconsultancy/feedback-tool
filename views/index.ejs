@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Feedback Tool</title>
+</head>
+<body>
+    <h1>Welcome to the Feedback Tool</h1>
+
+    <% if (isAuthenticated) { %>
+        <form action="/feedback" method="post">
+            <textarea name="content" placeholder="Your feedback"></textarea><br>
+            <button type="submit">Submit Feedback</button>
+        </form>
+        <a href="/logout">Logout</a>
+    <% } else { %>
+        <a href="/login">Login</a> | <a href="/register">Register</a>
+    <% } %>
+
+    <h2>Feedbacks:</h2>
+    <ul>
+        <% feedbacks.forEach(feedback => { %>
+            <li><%= feedback.content %></li>
+        <% }); %>
+    </ul>
+</body>
+</html>
+
+
